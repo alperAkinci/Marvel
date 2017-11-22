@@ -8,7 +8,7 @@
 
 Let get into functional reactive programming! 
 
-Imagine an simple app uses MVVM architecture, Coordinators ,RxSwift and Moya! 
+Imagine a simple app uses MVVM architecture, Coordinators ,RxSwift and Moya! 
 
 Sounds yummy ha, lets start to build it :)  
 
