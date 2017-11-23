@@ -33,6 +33,7 @@
 		E1FDAE401FC72D66004E82DB /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE3F1FC72D66004E82DB /* BrowseCoordinator.swift */; };
 		E1FDAE421FC72D70004E82DB /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE411FC72D70004E82DB /* BrowseView.swift */; };
 		E1FDAE441FC72D86004E82DB /* BrowseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE431FC72D86004E82DB /* BrowseController.swift */; };
+		E1FDAE461FC73534004E82DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1FDAE451FC73533004E82DB /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		E1FDAE3F1FC72D66004E82DB /* BrowseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
 		E1FDAE411FC72D70004E82DB /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		E1FDAE431FC72D86004E82DB /* BrowseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseController.swift; sourceTree = "<group>"; };
+		E1FDAE451FC73533004E82DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		E1AAFC1D1FC5D07A00BA9753 = {
 			isa = PBXGroup;
 			children = (
+				E1FDAE451FC73533004E82DB /* Default-568h@2x.png */,
 				E1AAFC281FC5D07B00BA9753 /* Marvel */,
 				E1AAFC271FC5D07B00BA9753 /* Products */,
 			);
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1AAFC341FC5D07B00BA9753 /* LaunchScreen.storyboard in Resources */,
+				E1FDAE461FC73534004E82DB /* Default-568h@2x.png in Resources */,
 				E1AAFC311FC5D07B00BA9753 /* Assets.xcassets in Resources */,
 				E1AAFC2F1FC5D07B00BA9753 /* Main.storyboard in Resources */,
 			);
