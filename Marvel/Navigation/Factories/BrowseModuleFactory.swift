@@ -11,4 +11,5 @@ import Foundation
 protocol BrowseModuleFactory {
 
     func makeBrowseOutput() -> BrowseView
+
 }

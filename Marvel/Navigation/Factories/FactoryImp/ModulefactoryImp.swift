@@ -10,7 +10,8 @@ import Foundation
 
 
 class ModuleFactoryImp: HomeModuleFactory, BrowseModuleFactory {
-
+    func makeBrowseOutput() -> BrowseView {
+        <#code#>
+    }
     
-
 }

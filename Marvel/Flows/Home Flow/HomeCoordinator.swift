@@ -27,41 +27,49 @@ final class HomeCoordinator: BaseCoordinator {
         showComicList()
     }
 
-    //MARK: - Run current flow's controllers
+    //MARK: - Run controllers belong to homeCoordinator (Home Flow)
 
     private func showComicList() {
 
-        let itemsOutput = factory.makeItemsOutput()
-        itemsOutput.onItemSelect = { [weak self] (item) in
-            self?.showItemDetail(item)
+        let comicsOutput = factory.makeComicsOutput()
+
+        // if comic selected, show detail screen
+        comicsOutput.onComicSelect = { [weak self] (item) in
+            //self?.showComicDetail(item)
         }
-        itemsOutput.onCreateItem = { [weak self] in
-            self?.runCreationFlow()
-        }
-        router.setRootModule(itemsOutput)
+
+//       Creating new comic
+//        comicsOutput.onCreateItem = { [weak self] in
+//            self?.runCreationFlow()
+//        }
+
+        router.setRootModule(comicsOutput)
     }
+/// - Comic Detail Screen
+//    private func showComicDetail(_ comic: ComicList) {
+//
+//        let itemDetailFlowOutput = factory.makeItemDetailOutput(item: item)
+//        router.push(itemDetailFlowOutput)
+//    }
 
-    private func showItemDetail(_ item: ItemList) {
 
-        let itemDetailFlowOutput = factory.makeItemDetailOutput(item: item)
-        router.push(itemDetailFlowOutput)
-    }
+// MARK: - Run coordinators (switch to another flow)
 
-    //MARK: - Run coordinators (switch to another flow)
 
-    private func runCreationFlow() {
-
-        let (coordinator, module) = coordinatorFactory.makeItemCreationCoordinatorBox()
-        coordinator.finishFlow = { [weak self, weak coordinator] item in
-
-            self?.router.dismissModule()
-            self?.removeDependency(coordinator)
-            if let item = item {
-                self?.showItemDetail(item)
-            }
-        }
-        addDependency(coordinator)
-        router.present(module)
-        coordinator.start()
-    }
+// - Creating Flow for comic detail
+//    private func runCreationFlow() {
+//
+//        let (coordinator, module) = coordinatorFactory.makeItemCreationCoordinatorBox()
+//        coordinator.finishFlow = { [weak self, weak coordinator] item in
+//
+//            self?.router.dismissModule()
+//            self?.removeDependency(coordinator)
+//            if let item = item {
+//                self?.showItemDetail(item)
+//            }
+//        }
+//        addDependency(coordinator)
+//        router.present(module)
+//        coordinator.start()
+//    }
 }

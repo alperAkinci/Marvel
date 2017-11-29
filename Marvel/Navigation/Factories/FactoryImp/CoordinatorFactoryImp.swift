@@ -11,8 +11,6 @@ import UIKit
 
 final class CoordinatorFactoryImp: CoordinatorFactory {
 
-
-    
     private func router(_ navController: UINavigationController?) -> Router {
         return RouterImp(rootController: navigationController(navController))
     }

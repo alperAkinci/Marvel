@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10CDB371FCED8B800262870 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CDB361FCED8B800262870 /* HomeViewController.swift */; };
+		E10CDB391FCED90200262870 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CDB381FCED90200262870 /* BrowseViewController.swift */; };
 		E1AAFC2A1FC5D07B00BA9753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAFC291FC5D07B00BA9753 /* AppDelegate.swift */; };
 		E1AAFC2C1FC5D07B00BA9753 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAFC2B1FC5D07B00BA9753 /* ViewController.swift */; };
 		E1AAFC2F1FC5D07B00BA9753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1AAFC2D1FC5D07B00BA9753 /* Main.storyboard */; };
@@ -29,14 +31,14 @@
 		E1FDAE381FC7265C004E82DB /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE371FC7265C004E82DB /* BaseCoordinator.swift */; };
 		E1FDAE3A1FC72D24004E82DB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE391FC72D24004E82DB /* HomeCoordinator.swift */; };
 		E1FDAE3C1FC72D35004E82DB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE3B1FC72D35004E82DB /* HomeView.swift */; };
-		E1FDAE3E1FC72D4E004E82DB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE3D1FC72D4E004E82DB /* HomeController.swift */; };
 		E1FDAE401FC72D66004E82DB /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE3F1FC72D66004E82DB /* BrowseCoordinator.swift */; };
 		E1FDAE421FC72D70004E82DB /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE411FC72D70004E82DB /* BrowseView.swift */; };
-		E1FDAE441FC72D86004E82DB /* BrowseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDAE431FC72D86004E82DB /* BrowseController.swift */; };
 		E1FDAE461FC73534004E82DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1FDAE451FC73533004E82DB /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E10CDB361FCED8B800262870 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E10CDB381FCED90200262870 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		E1AAFC261FC5D07B00BA9753 /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1AAFC291FC5D07B00BA9753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1AAFC2B1FC5D07B00BA9753 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,10 +63,8 @@
 		E1FDAE371FC7265C004E82DB /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		E1FDAE391FC72D24004E82DB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		E1FDAE3B1FC72D35004E82DB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		E1FDAE3D1FC72D4E004E82DB /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		E1FDAE3F1FC72D66004E82DB /* BrowseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
 		E1FDAE411FC72D70004E82DB /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
-		E1FDAE431FC72D86004E82DB /* BrowseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseController.swift; sourceTree = "<group>"; };
 		E1FDAE451FC73533004E82DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,7 +200,7 @@
 			children = (
 				E1FDAE411FC72D70004E82DB /* BrowseView.swift */,
 				E1FDAE3F1FC72D66004E82DB /* BrowseCoordinator.swift */,
-				E1FDAE431FC72D86004E82DB /* BrowseController.swift */,
+				E10CDB381FCED90200262870 /* BrowseViewController.swift */,
 			);
 			path = "Browse Flow";
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			children = (
 				E1FDAE3B1FC72D35004E82DB /* HomeView.swift */,
 				E1FDAE391FC72D24004E82DB /* HomeCoordinator.swift */,
-				E1FDAE3D1FC72D4E004E82DB /* HomeController.swift */,
+				E10CDB361FCED8B800262870 /* HomeViewController.swift */,
 			);
 			path = "Home Flow";
 			sourceTree = "<group>";
@@ -308,12 +308,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FDAE161FC70021004E82DB /* Router.swift in Sources */,
-				E1FDAE441FC72D86004E82DB /* BrowseController.swift in Sources */,
 				E1FDAE341FC7226E004E82DB /* TabbarController.swift in Sources */,
 				E1FDAE231FC713F7004E82DB /* HomeModuleFactory.swift in Sources */,
 				E1FDAE301FC72242004E82DB /* TabbarView.swift in Sources */,
-				E1FDAE3E1FC72D4E004E82DB /* HomeController.swift in Sources */,
 				E1AAFC2C1FC5D07B00BA9753 /* ViewController.swift in Sources */,
+				E10CDB371FCED8B800262870 /* HomeViewController.swift in Sources */,
 				E1AAFC2A1FC5D07B00BA9753 /* AppDelegate.swift in Sources */,
 				E1FDAE381FC7265C004E82DB /* BaseCoordinator.swift in Sources */,
 				E1FDAE281FC7192F004E82DB /* CoordinatorFactoryImp.swift in Sources */,
@@ -324,6 +323,7 @@
 				E1FDAE1A1FC704AC004E82DB /* Presentable.swift in Sources */,
 				E1FDAE211FC7083A004E82DB /* CoordinatorFactory.swift in Sources */,
 				E1FDAE2A1FC71E8E004E82DB /* ModulefactoryImp.swift in Sources */,
+				E10CDB391FCED90200262870 /* BrowseViewController.swift in Sources */,
 				E1FDAE1D1FC706C5004E82DB /* Coordinator.swift in Sources */,
 				E1FDAE321FC72260004E82DB /* TabbarCoordinator.swift in Sources */,
 				E1FDAE421FC72D70004E82DB /* BrowseView.swift in Sources */,

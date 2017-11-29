@@ -41,7 +41,7 @@ class TabbarCoordinator: BaseCoordinator {
             if navController.viewControllers.isEmpty == true {
                 let browseCoordinator = self.coordinatorFactory.makeBrowseCoordinator(navController: navController)
                 browseCoordinator.start()
-                self.addDependency(browseCoordinator)
+                self.addDependency(browseCoordinator) 
             }
         }
     }

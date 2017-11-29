@@ -13,3 +13,4 @@ protocol TabbarView: class {
     var onBrowseFlowSelect: ((UINavigationController) -> ())? { get set }
     var onViewDidLoad: ((UINavigationController) -> ())? { get set }
 }
+
