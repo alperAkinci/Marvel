@@ -10,9 +10,7 @@ import Foundation
 
 // Currently home module shows comics
 protocol HomeModuleFactory {
-
-    func makeComicsOutput() -> ComicView
-    func makeComicDetailOutput(comic: ComicList) -> ComicDetailView
-
+    func makeHomeOutput() -> HomeView
+    //func makeComicDetailOutput(comic: ComicList) -> ComicDetailView
 }
 

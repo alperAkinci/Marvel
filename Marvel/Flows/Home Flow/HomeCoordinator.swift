@@ -31,7 +31,7 @@ final class HomeCoordinator: BaseCoordinator {
 
     private func showComicList() {
 
-        let comicsOutput = factory.makeComicsOutput()
+        let comicsOutput = factory.makeHomeOutput()
 
         // if comic selected, show detail screen
         comicsOutput.onComicSelect = { [weak self] (item) in

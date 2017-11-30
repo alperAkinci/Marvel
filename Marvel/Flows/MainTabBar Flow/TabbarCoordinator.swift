@@ -22,7 +22,7 @@ class TabbarCoordinator: BaseCoordinator {
     override func start() {
         tabbarView.onViewDidLoad = runHomeFlow()
         tabbarView.onHomeFlowSelect = runHomeFlow()
-        tabbarView.onHomeFlowSelect = runBrowseFlow()
+        tabbarView.onBrowseFlowSelect = runBrowseFlow()
     }
 
     // Run Flows

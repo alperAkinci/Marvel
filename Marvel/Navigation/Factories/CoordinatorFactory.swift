@@ -19,14 +19,14 @@ protocol CoordinatorFactory {
     // func makeTutorialCoordinatorBox(navController: UINavigationController?) -> (configurator: Coordinator & TutorialCoordinatorOutput, toPresent: Presentable?)
 
     // Make tabbar Coordinator
-    func makeTabbarCoordinator() -> (configurator: Coordinator & TabbarCoordinatorOutput, toPresent: Presentable?)
+    func makeTabbarCoordinator() -> (configurator: Coordinator, toPresent: Presentable?)
 
     // Make profile Coordinator
-    func makeHomeCoordinator(navController: UINavigationController?) -> Coordinator & HomeCoordinatorOutput
+    func makeHomeCoordinator(navController: UINavigationController?) -> Coordinator
     func makeHomeCoordinator() -> Coordinator
 
     // Make browse Coordinator
-    func makeBrowseCoordinator(navController: UINavigationController?) -> Coordinator & BrowseCoordinatorOutput
+    func makeBrowseCoordinator(navController: UINavigationController?) -> Coordinator
     func makeBrowseCoordinator() -> Coordinator
 
 }

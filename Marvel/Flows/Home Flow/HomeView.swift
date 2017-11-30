@@ -9,10 +9,8 @@
 import Foundation
 
 protocol HomeView: BaseView {
-
     // if user selects comic, trigger this method
     var onComicSelect: ((ComicList) -> ())? { get set }
-
     //var onFinish: (() -> Void)? { get set }
 }
 

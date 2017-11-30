@@ -64,38 +64,9 @@ final class ApplicationCoordinator: BaseCoordinator {
     private func runMainFlow() {
 
         let (coordinator,module) = coordinatorFactory.makeTabbarCoordinator()
-        // finish main flow
-        coordinator.finishFlow = { [weak self, weak coordinator] in
-            print("Close Main Flow")
-            isAutorized = false
-            self?.start()
-            self?.removeDependency(coordinator)
-        }
         addDependency(coordinator)
         router.setRootModule(module, hideBar: true)
         coordinator.start()
     }
-
-//    private func runAuthFlow() {
-//        let coordinator = coordinatorFactory.makeAuthCoordinatorBox(router: router)
-//        coordinator.finishFlow = { [weak self, weak coordinator] in
-//            isAutorized = true
-//            self?.start()
-//            self?.removeDependency(coordinator)
-//        }
-//        addDependency(coordinator)
-//        coordinator.start()
-//    }
-
-//    private func runTutorialFlow() {
-//        let (coordinator, _ ) = coordinatorFactory.makeTutorialCoordinator(router: router)
-//        coordinator.finishFlow = { [weak self, weak coordinator] in
-//            tutorialWasShown = true
-//            self?.start()
-//            self?.removeDependency(coordinator)
-//        }
-//        addDependency(coordinator)
-//        coordinator.start()
-//    }
 
 }

@@ -8,10 +8,14 @@
 
 import Foundation
 
-
+// Used in Coordinators to initialize modules (coordinators)
 class ModuleFactoryImp: HomeModuleFactory, BrowseModuleFactory {
-    func makeBrowseOutput() -> BrowseView {
-        <#code#>
+
+    func makeHomeOutput() -> HomeView {
+        return HomeController.controllerFromStoryboard(.home)
     }
-    
+
+    func makeBrowseOutput() -> BrowseView {
+        return BrowseController.controllerFromStoryboard(.browse)
+    }
 }
