@@ -123,5 +123,47 @@ class HomeController: UIViewController, HomeView {
             }).disposed(by: disposeBag)
             print()
         }
+
+        print("\n2 - Subjects")
+
+        /**
+         Common need when developing apps is to manually add new values onto an observable at runtime that will then be emitted to subscribers. What you want is something that can act as both an observable and as an observer. And that something is called a Subject.
+        */
+
+        print("\n - Publish Subjects")
+        let publishSubject = PublishSubject<String>()
+
+        // Behaving as observer - receives events
+        publishSubject.onNext("Hey Listen me! Are you there?")
+
+        // Behaving as observable - be subscribed to
+        publishSubject.subscribe(onNext: { (message) in
+            print(message)
+        }).disposed(by: disposeBag)
+
+        // Result: The subject received .next events, and each time it received an event, it turned around and emitted it to its subscriber.
+        publishSubject.onNext("I am publishSubject. When you subscribe me, you will only get the values that were emitted after the subscription.")
+
+        print("\n - Behaviour Subjects")
+        let behaviourSubject = BehaviorSubject<String>(value: "First Message")
+
+        behaviourSubject.onNext("Second Message - I am behaviourSubject.When you subscribe me, you will get the latest value emitted by the Subject, and then the values emitted after the subscription.")
+
+        print("first behaviour subject:")
+        behaviourSubject.subscribe(onNext: { (message) in
+            print(message) // Will only print second event
+        }).disposed(by: disposeBag)
+
+        behaviourSubject.onNext("Third Message")
+
+        print("second behaviour subject:")
+        behaviourSubject.subscribe(onNext: { (message) in
+            print(message) // Will only print second event
+        }).disposed(by: disposeBag)
+
+        /**
+         NOTE:
+         - Since BehaviorSubject always emits the latest element, you can't create one without providing a default initial value. If you can't provide a default initial value at creation time, that probably means you need to use a PublishSubject instead.
+        */
     }
 }
