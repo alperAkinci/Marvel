@@ -19,23 +19,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlj-O6-QaB">
-                                <rect key="frame" x="164" y="333" width="46" height="21"/>
+                                <rect key="frame" x="164" y="616" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ydD-es-o21">
+                                <rect key="frame" x="67" y="214" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="K6V-OA-fLu"/>
+                                    <constraint firstAttribute="width" constant="240" id="wWN-Nh-PKL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dlj-O6-QaB" firstAttribute="centerY" secondItem="eS1-RY-5zi" secondAttribute="centerY" id="54d-co-dcj"/>
                             <constraint firstItem="Dlj-O6-QaB" firstAttribute="centerX" secondItem="eS1-RY-5zi" secondAttribute="centerX" id="B07-Ti-ict"/>
+                            <constraint firstItem="eS1-RY-5zi" firstAttribute="bottom" secondItem="Dlj-O6-QaB" secondAttribute="bottom" constant="30" id="IGj-Gn-aa7"/>
+                            <constraint firstItem="ydD-es-o21" firstAttribute="centerX" secondItem="K8e-f1-Ivi" secondAttribute="centerX" id="PeX-3h-jqp"/>
+                            <constraint firstItem="ydD-es-o21" firstAttribute="centerY" secondItem="K8e-f1-Ivi" secondAttribute="centerY" id="ReB-ZM-LtF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eS1-RY-5zi"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="ydD-es-o21" id="dBV-wA-ATn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXf-Ks-H0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-84" y="78"/>
+            <point key="canvasLocation" x="-84" y="77.811094452773617"/>
         </scene>
     </scenes>
 </document>
