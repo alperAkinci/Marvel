@@ -165,5 +165,36 @@ class HomeController: UIViewController, HomeView {
          NOTE:
          - Since BehaviorSubject always emits the latest element, you can't create one without providing a default initial value. If you can't provide a default initial value at creation time, that probably means you need to use a PublishSubject instead.
         */
+
+        print("\n - Variables(Subjects)")
+
+        /**
+           - Because it wraps a behavior subject, a variable is created with an initial value, and it will replay its latest or initial value to new subscribers. In order to access a variable’s underlying behavior subject, you call asObservable() on it.
+           - A variable will also automatically complete when it’s about to be deallocated, so you do not (and in fact, can’t) manually add a .completed event to it.
+         NOTE:
+            - Also unique to Variable, as compared to other subjects, is that it is guaranteed not to emit an error. So although you can listen for .error events in a subscription to a variable, you cannot add an .error event onto a variable.
+         */
+
+        let variable = Variable.init("Old Initial Value - You will not see me")
+
+        variable.value = "New initial Value"
+
+        variable.asObservable().subscribe(onNext: { (string) in
+            print("First Variable Subscriber: \(string)")
+        }).disposed(by: disposeBag)
+
+        variable.value = "Hey I am Variable"
+
+        variable.asObservable().subscribe(onNext: { (string) in
+            print("Second Variable Subscriber: \(string)")
+            print(string)
+        }).disposed(by: disposeBag)
+
+        variable.value = "Happy New Year!"
+
+        /*
+         - Variables are versatile. You can subscribe to them as observables to be able to react whenever a new .next event is emitted, just like any other subject. And they can accommodate one-off needs, such as when you just need to check the current value without subscribing to receive updates.
+        */
+
     }
 }
