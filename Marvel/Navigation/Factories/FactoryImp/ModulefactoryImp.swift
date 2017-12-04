@@ -15,6 +15,10 @@ class ModuleFactoryImp: HomeModuleFactory, BrowseModuleFactory {
         return HomeController.controllerFromStoryboard(.home)
     }
 
+    func makeChangeImageOutput() -> ChangeImageView {
+        return ChangeImageController.controllerFromStoryboard(.home)
+    }
+
     func makeBrowseOutput() -> BrowseView {
         return BrowseController.controllerFromStoryboard(.browse)
     }

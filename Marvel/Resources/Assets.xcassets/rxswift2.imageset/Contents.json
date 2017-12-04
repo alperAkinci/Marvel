@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "rxswift_icon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "rxswift_2_ic.png",
       "scale" : "2x"
     },
     {

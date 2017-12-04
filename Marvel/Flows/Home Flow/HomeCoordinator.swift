@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import RxSwift
 
 final class HomeCoordinator: BaseCoordinator {
+
+    let imageSelected = PublishSubject<UIImage>()
+    let disposeBag = DisposeBag()
 
     private let factory: HomeModuleFactory
 
@@ -38,13 +42,37 @@ final class HomeCoordinator: BaseCoordinator {
             //self?.showComicDetail(item)
         }
 
+        comicsOutput.onChangeImageSelect = { [weak self] (image) in
+            self?.showChangeImage()
+        }
+
+        imageSelected.asObservable()
+            .bind(to: comicsOutput.imageVariable)
+            .disposed(by: disposeBag)
+
 //       Creating new comic
 //        comicsOutput.onCreateItem = { [weak self] in
 //            self?.runCreationFlow()
 //        }
-
         router.setRootModule(comicsOutput)
     }
+
+    private func showChangeImage() {
+
+        let changeImageOutput = factory.makeChangeImageOutput()
+
+        changeImageOutput.onCompleteSelectImage = {[weak self] in
+            self?.router.popModule(animated: true)
+        }
+
+        changeImageOutput.selectedImageSubject
+            .asObservable()
+            .bind(to: imageSelected)
+            .disposed(by: disposeBag)
+
+        router.push(changeImageOutput)
+    }
+
 /// - Comic Detail Screen
 //    private func showComicDetail(_ comic: ComicList) {
 //
