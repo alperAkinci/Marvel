@@ -11,12 +11,14 @@ import RxCocoa
 import RxSwift
 
 class HomeController: UIViewController, HomeView {
-    var onChangeImageSelect: ((UIImage?) -> ())?
-    var onComicSelect: ((ComicList) -> ())?
 
     @IBOutlet weak var imageView: UIImageView!
 
+    //var onChangeImageSelect: ((UIImage?) -> ())?
+    var onComicSelect: ((ComicList) -> ())?
     var imageVariable = Variable<UIImage?>(#imageLiteral(resourceName: "rxswift"))
+    var onChangeImageSelect = PublishSubject<UIImage?>()
+
     let disposeBag = DisposeBag()
 
     var clearButton: UIBarButtonItem? {
@@ -48,6 +50,11 @@ class HomeController: UIViewController, HomeView {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("resources: \(RxSwift.Resources.total)")
+    }
+
     func updateUI(image: UIImage?) {
         // set image name to title
         self.navigationItem.title = image == nil ? "Pick image" : "Selected Image"
@@ -60,6 +67,6 @@ class HomeController: UIViewController, HomeView {
     }
 
     @IBAction func changeImage(_ sender: UIButton) {
-        onChangeImageSelect?(imageView.image)
+        onChangeImageSelect.onNext(imageVariable.value)
     }
 }

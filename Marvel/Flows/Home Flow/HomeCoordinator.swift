@@ -11,7 +11,7 @@ import RxSwift
 
 final class HomeCoordinator: BaseCoordinator {
 
-    let imageSelected = PublishSubject<UIImage>()
+    let changeImage = PublishSubject<UIImage?>()
     let disposeBag = DisposeBag()
 
     private let factory: HomeModuleFactory
@@ -22,9 +22,16 @@ final class HomeCoordinator: BaseCoordinator {
     private let router: Router
 
     init(router: Router, factory: HomeModuleFactory, coordinatorFactory: CoordinatorFactory) {
+
         self.router = router
         self.factory = factory
         self.coordinatorFactory = coordinatorFactory
+        super.init()
+
+        changeImage.subscribe(onNext: {[weak self] (image) in
+            guard let image = image else{ return }
+            self?.showChangeImage()
+        }).disposed(by: disposeBag)
     }
 
     override func start() {
@@ -42,13 +49,17 @@ final class HomeCoordinator: BaseCoordinator {
             //self?.showComicDetail(item)
         }
 
-        comicsOutput.onChangeImageSelect = { [weak self] (image) in
-            self?.showChangeImage()
-        }
-
-        imageSelected.asObservable()
-            .bind(to: comicsOutput.imageVariable)
+        comicsOutput.onChangeImageSelect.asObservable()
+            .bind(to: changeImage)
             .disposed(by: disposeBag)
+
+//        comicsOutput.onChangeImageSelect = { [weak self] (image) in
+//            self?.showChangeImage()
+//        }
+
+//        imageSelected.asObservable()
+//            .bind(to: comicsOutput.imageVariable)
+//            .disposed(by: disposeBag)
 
 //       Creating new comic
 //        comicsOutput.onCreateItem = { [weak self] in
@@ -65,10 +76,10 @@ final class HomeCoordinator: BaseCoordinator {
             self?.router.popModule(animated: true)
         }
 
-        changeImageOutput.selectedImageSubject
-            .asObservable()
-            .bind(to: imageSelected)
-            .disposed(by: disposeBag)
+//        changeImageOutput.selectedImageSubject
+//            .asObservable()
+//            .bind(to: imageSelected)
+//            .disposed(by: disposeBag)
 
         router.push(changeImageOutput)
     }

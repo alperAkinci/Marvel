@@ -31,6 +31,16 @@ class ChangeImageController: UIViewController, ChangeImageView {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedImageSubject.onCompleted()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("resources: \(RxSwift.Resources.total)")
+    }
+
     @IBAction func pressedOnImage(_ sender: UIButton) {
         guard let image = sender.imageView?.image else {
             print("No image found")
