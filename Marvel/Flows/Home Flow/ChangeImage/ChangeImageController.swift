@@ -11,29 +11,60 @@ import RxSwift
 import RxCocoa  
 
 class ChangeImageController: UIViewController, ChangeImageView {
-    
-    var onHideButtonTap: (() -> Void)?
+
     var onCompleteSelectImage: (() -> Void)?
+    var completeSelectImage = PublishSubject<UIImage>()
+    var changeImageViewModel: ChangeImageViewModel!
+    let disposeBag = DisposeBag()
 
-    // TODO: Make it fileprivate
-    var selectedImageSubject = PublishSubject<UIImage>()
+    var doneButton: UIBarButtonItem? {
+        set {
+            self.navigationItem.rightBarButtonItem = newValue
+        }
+        get {
+            return self.navigationItem.rightBarButtonItem
+        }
+    }
 
-    //Subscribing to this property is how the main controller can observe the image sequence
-    var selectedImage: Observable<UIImage> {
-        return selectedImageSubject.asObservable()
+    convenience init(viewModel: ChangeImageViewModel) {
+        self.init()
+        self.changeImageViewModel = viewModel
     }
 
     @IBOutlet var images: [UIButton]!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        doneButton = UIBarButtonItem(title: "Done",
+                                      style: .done,
+                                      target: self,
+                                      action: #selector(doneButtonPressed(_:)))
+        setupRx()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        selectedImageSubject.onCompleted()
+    func setupRx() {
+        // do bindings
+        for imageBtn in images {
+            imageBtn.rx
+                .tap
+                .debug("Button Pressed")
+                .subscribe(onNext: { [weak self] in
+                guard let image = imageBtn.imageView?.image else {
+                    print("No image found")
+                    return
+                }
+                self?.resetButtonBackgroundColors()
+                imageBtn.backgroundColor = UIColor.black
+                self?.changeImageViewModel.imageChanged(image)
+            }).disposed(by: disposeBag)
+        }
+    }
+
+    func resetButtonBackgroundColors() {
+        for btn in images {
+            btn.backgroundColor = UIColor.white
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,12 +72,8 @@ class ChangeImageController: UIViewController, ChangeImageView {
         print("resources: \(RxSwift.Resources.total)")
     }
 
-    @IBAction func pressedOnImage(_ sender: UIButton) {
-        guard let image = sender.imageView?.image else {
-            print("No image found")
-            return
-        }
-        selectedImageSubject.onNext(image)
-        onCompleteSelectImage?()
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        var selectedImage = self.changeImageViewModel.selectedImageVariable.value
+        self.completeSelectImage.onNext(selectedImage!)
     }
 }

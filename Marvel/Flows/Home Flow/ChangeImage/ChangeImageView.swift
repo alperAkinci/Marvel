@@ -11,10 +11,9 @@ import UIKit
 import RxSwift
 
 protocol ChangeImageView: BaseView {
-    // if user selects comic, trigger this method
-    var onHideButtonTap: (() -> Void)? { get set }
+    var completeSelectImage: PublishSubject<UIImage> { get set }
     var onCompleteSelectImage: (() -> Void)? { get set }
-    var selectedImageSubject: PublishSubject<UIImage> { get set }
+    var changeImageViewModel: ChangeImageViewModel! { get set }
     //var onFinish: (() -> Void)? { get set }
 }
 

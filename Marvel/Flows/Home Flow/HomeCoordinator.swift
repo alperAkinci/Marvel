@@ -12,6 +12,7 @@ import RxSwift
 final class HomeCoordinator: BaseCoordinator {
 
     let changeImage = PublishSubject<UIImage?>()
+    let completedImageChange = PublishSubject<UIImage?>()
     let disposeBag = DisposeBag()
 
     private let factory: HomeModuleFactory
@@ -29,9 +30,10 @@ final class HomeCoordinator: BaseCoordinator {
         super.init()
 
         changeImage.subscribe(onNext: {[weak self] (image) in
-            guard let image = image else{ return }
-            self?.showChangeImage()
+            let viewModel = ChangeImageViewModel(image: image)
+            self?.showChangeImage(with: viewModel)
         }).disposed(by: disposeBag)
+
     }
 
     override func start() {
@@ -43,43 +45,31 @@ final class HomeCoordinator: BaseCoordinator {
     private func showComicList() {
 
         let comicsOutput = factory.makeHomeOutput()
-
-        // if comic selected, show detail screen
-        comicsOutput.onComicSelect = { [weak self] (item) in
-            //self?.showComicDetail(item)
-        }
-
         comicsOutput.onChangeImageSelect.asObservable()
             .bind(to: changeImage)
             .disposed(by: disposeBag)
 
-//        comicsOutput.onChangeImageSelect = { [weak self] (image) in
-//            self?.showChangeImage()
-//        }
+        completedImageChange.asObservable()
+            .bind(to: comicsOutput.imageVariable)
+            .disposed(by: disposeBag)
 
-//        imageSelected.asObservable()
-//            .bind(to: comicsOutput.imageVariable)
-//            .disposed(by: disposeBag)
-
-//       Creating new comic
-//        comicsOutput.onCreateItem = { [weak self] in
-//            self?.runCreationFlow()
-//        }
         router.setRootModule(comicsOutput)
     }
 
-    private func showChangeImage() {
+    private func showChangeImage(with viewModel: ChangeImageViewModel) {
 
         let changeImageOutput = factory.makeChangeImageOutput()
+        changeImageOutput.changeImageViewModel = viewModel
 
-        changeImageOutput.onCompleteSelectImage = {[weak self] in
-            self?.router.popModule(animated: true)
-        }
+        changeImageOutput.completeSelectImage.asObservable()
+            .subscribe(onNext: { [weak self] (image) in
+                self?.router.popModule(animated: true)
+            })
+            .disposed(by: disposeBag)
 
-//        changeImageOutput.selectedImageSubject
-//            .asObservable()
-//            .bind(to: imageSelected)
-//            .disposed(by: disposeBag)
+        changeImageOutput.completeSelectImage.asObservable()
+            .bind(to: completedImageChange)
+            .disposed(by: disposeBag)
 
         router.push(changeImageOutput)
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -71,38 +71,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1V2-XZ-pLz">
-                                <rect key="frame" x="120.5" y="72" width="79" height="336"/>
+                                <rect key="frame" x="106.5" y="72" width="107" height="336"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAg-A4-1ED">
-                                        <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="107" height="107.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oAg-A4-1ED" secondAttribute="height" multiplier="1:1" id="Cw4-UR-2fx"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="rxswift"/>
-                                        <connections>
-                                            <action selector="pressedOnImage:" destination="pkZ-eR-Twz" eventType="touchUpInside" id="9MF-1I-FdD"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSG-KC-SO5">
-                                        <rect key="frame" x="0.0" y="86" width="79" height="78.5"/>
-                                        <state key="normal" title="Button" image="rxswift2"/>
-                                        <connections>
-                                            <action selector="pressedOnImage:" destination="pkZ-eR-Twz" eventType="touchUpInside" id="9a2-55-VRu"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyV-ND-gJF">
-                                        <rect key="frame" x="0.0" y="171.5" width="79" height="79"/>
-                                        <state key="normal" title="Button" image="reactiveCocao"/>
-                                        <connections>
-                                            <action selector="pressedOnImage:" destination="pkZ-eR-Twz" eventType="touchUpInside" id="G37-sw-IdO"/>
-                                        </connections>
+                                        <rect key="frame" x="0.0" y="114.5" width="107" height="107"/>
+                                        <state key="normal" image="rxswift2"/>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYu-Jk-sFU">
-                                        <rect key="frame" x="0.0" y="257.5" width="79" height="78.5"/>
+                                        <rect key="frame" x="0.0" y="228.5" width="107" height="107.5"/>
                                         <state key="normal" title="Button" image="swift"/>
-                                        <connections>
-                                            <action selector="pressedOnImage:" destination="pkZ-eR-Twz" eventType="touchUpInside" id="YhF-dj-r3h"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -121,7 +105,6 @@
                     <connections>
                         <outletCollection property="images" destination="oAg-A4-1ED" collectionClass="NSMutableArray" id="rrW-oc-XRP"/>
                         <outletCollection property="images" destination="wSG-KC-SO5" collectionClass="NSMutableArray" id="BpE-J8-OG7"/>
-                        <outletCollection property="images" destination="XyV-ND-gJF" collectionClass="NSMutableArray" id="Rzz-QC-eOh"/>
                         <outletCollection property="images" destination="lYu-Jk-sFU" collectionClass="NSMutableArray" id="KpK-Lr-dTN"/>
                     </connections>
                 </viewController>
@@ -131,7 +114,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="reactiveCocao" width="195" height="195"/>
         <image name="rxswift" width="200" height="200"/>
         <image name="rxswift2" width="100" height="100"/>
         <image name="swift" width="256" height="256"/>
