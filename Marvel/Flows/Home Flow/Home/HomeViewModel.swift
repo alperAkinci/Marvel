@@ -14,10 +14,10 @@ class HomeViewModel {
     //MARK: Inputs
 
     /// Call to update image.
-    let setCurrentImage: AnyObserver<UIImage>
+    let setImage: AnyObserver<UIImage>
 
     /// Call to ChangeImage screen.
-    let onChangeImageSelect: AnyObserver<UIImage?>
+    let changeImage: AnyObserver<Void>
 
 
     //MARK: Outputs
@@ -25,13 +25,18 @@ class HomeViewModel {
     /// Emits a current selected image.
     let image: Observable<UIImage>
 
+    /// Emits when we should show show ChangeImage screen.
+    let showChangeImage: Observable<Void>
+
     init(initialImage: UIImage = #imageLiteral(resourceName: "rxswift")) {
-        let _onChangeImageSelect = PublishSubject<UIImage?>()
-        self.onChangeImageSelect = _onChangeImageSelect.asObserver()
 
-        var _currentImage = BehaviorSubject<UIImage>(value: initialImage)
-        self.setCurrentImage = _currentImage.asObserver()
-
+        let _currentImage = BehaviorSubject<UIImage>(value: initialImage)
+        self.setImage = _currentImage.asObserver()
         self.image = _currentImage.asObservable()
+
+
+        let _changeImage = PublishSubject<Void>()
+        self.changeImage = _changeImage.asObserver()
+        self.showChangeImage = _changeImage.asObservable()
     }
 }

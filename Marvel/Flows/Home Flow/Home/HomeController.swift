@@ -13,6 +13,7 @@ import RxSwift
 class HomeController: UIViewController, HomeView {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var changeImageButton: UIButton!
 
     var viewModel: HomeViewModel!
     private let disposeBag = DisposeBag()
@@ -57,7 +58,10 @@ class HomeController: UIViewController, HomeView {
         }).disposed(by: disposeBag)
 
         // View Controller UI actions to the View Model
-        
+        changeImageButton.rx.tap
+            .debounce(1.0, scheduler: MainScheduler.instance)
+            .bind(to: viewModel.changeImage)
+            .disposed(by: disposeBag)
     }
 
     func updateUI(image: UIImage?) {
@@ -71,7 +75,4 @@ class HomeController: UIViewController, HomeView {
         //imageVariable.value = nil
     }
 
-    @IBAction func changeImage(_ sender: UIButton) {
-        //onChangeImageSelect.onNext(imageVariable.value)
-    }
 }

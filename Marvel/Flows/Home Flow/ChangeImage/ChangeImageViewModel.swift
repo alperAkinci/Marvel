@@ -11,19 +11,31 @@ import RxSwift
 
 struct ChangeImageViewModel {
 
-    init(image: UIImage?) {
-        selectedImageVariable.value = image
-        selectedImage = selectedImageVariable.asObservable()
+    //MARK: Inputs
+
+    /// Called when image is selected.
+    let selectImage: AnyObserver<UIImage>
+
+    /// Called to close ChangeImage screen.
+    let cancel: AnyObserver<Void>
+
+
+    //MARK: Outputs
+
+    let didSelectImage: Observable<UIImage>
+
+    let didCancel: Observable<Void>
+
+    init() {
+
+        let _selectImage = PublishSubject<UIImage>()
+        self.selectImage = _selectImage.asObserver()
+        self.didSelectImage = _selectImage.asObservable()
+
+
+        let _cancel = PublishSubject<Void>()
+        self.cancel = _cancel.asObserver()
+        self.didCancel = _cancel.asObservable()
     }
 
-    // INPUT
-
-    //TODO: make it private 
-    var selectedImageVariable = Variable<UIImage?>(UIImage())
-    public func imageChanged(_ image: UIImage?) {
-        self.selectedImageVariable.value = image
-    }
-
-    // OUTPUT
-    var selectedImage: Observable<UIImage?>
 }

@@ -16,8 +16,3 @@ protocol HomeView: BaseView {
     var viewModel: HomeViewModel! { get set }
 
 }
-
-struct ComicList {
-
-}
-

@@ -34,9 +34,6 @@
                                     <constraint firstAttribute="height" constant="30" id="gOp-Ip-ru5"/>
                                 </constraints>
                                 <state key="normal" title="Change Image"/>
-                                <connections>
-                                    <action selector="changeImage:" destination="UXZ-Hl-0Kh" eventType="touchUpInside" id="Qly-Ad-x7t"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,6 +46,7 @@
                         <viewLayoutGuide key="safeArea" id="eS1-RY-5zi"/>
                     </view>
                     <connections>
+                        <outlet property="changeImageButton" destination="niT-eJ-BWn" id="WDY-MR-OVI"/>
                         <outlet property="imageView" destination="ydD-es-o21" id="dBV-wA-ATn"/>
                     </connections>
                 </viewController>
