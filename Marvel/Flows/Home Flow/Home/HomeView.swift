@@ -11,12 +11,10 @@ import UIKit
 import RxSwift
 
 protocol HomeView: BaseView {
-    // if user selects comic, trigger this method
-    var onComicSelect: ((ComicList) -> ())? { get set }
-    //var onChangeImageSelect: ((UIImage?) -> ())? { get set }
-    var imageVariable: Variable<UIImage?> { get set }
-    //var onFinish: (() -> Void)? { get set }
-    var onChangeImageSelect: PublishSubject<UIImage?> { get set }
+
+    // TODO: Put viewModel inside BaseView
+    var viewModel: HomeViewModel! { get set }
+
 }
 
 struct ComicList {

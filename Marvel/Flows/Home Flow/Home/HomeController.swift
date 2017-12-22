@@ -14,12 +14,8 @@ class HomeController: UIViewController, HomeView {
 
     @IBOutlet weak var imageView: UIImageView!
 
-    //var onChangeImageSelect: ((UIImage?) -> ())?
-    var onComicSelect: ((ComicList) -> ())?
-    var imageVariable = Variable<UIImage?>(#imageLiteral(resourceName: "rxswift"))
-    var onChangeImageSelect = PublishSubject<UIImage?>()
-
-    let disposeBag = DisposeBag()
+    var viewModel: HomeViewModel!
+    private let disposeBag = DisposeBag()
 
     var clearButton: UIBarButtonItem? {
         set {
@@ -33,6 +29,7 @@ class HomeController: UIViewController, HomeView {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // TODO: Put it inside viewModel
         self.navigationItem.title = "Test"
 
         clearButton = UIBarButtonItem(title: "Clear",
@@ -40,19 +37,27 @@ class HomeController: UIViewController, HomeView {
                                       target: self,
                                       action: #selector(clearImage))
 
-        imageVariable.asObservable().subscribe(onNext: {[weak self] (image) in
-            self?.imageView.image = image
-        }).disposed(by: disposeBag)
-
-        imageVariable.asObservable().subscribe(onNext: {[weak self] (image) in
-            self?.updateUI(image: image)
-        }).disposed(by: disposeBag)
-
+        setupBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("resources: \(RxSwift.Resources.total)")
+    }
+
+    private func setupBindings() {
+
+        // View Model outputs to the View Controller
+        viewModel.image
+            .bind(to: imageView.rx.image)
+            .disposed(by: disposeBag)
+
+        viewModel.image.subscribe(onNext: {[weak self] (image) in
+            self?.updateUI(image: image)
+        }).disposed(by: disposeBag)
+
+        // View Controller UI actions to the View Model
+        
     }
 
     func updateUI(image: UIImage?) {
@@ -63,10 +68,10 @@ class HomeController: UIViewController, HomeView {
     }
 
     @objc func clearImage(){
-        imageVariable.value = nil
+        //imageVariable.value = nil
     }
 
     @IBAction func changeImage(_ sender: UIButton) {
-        onChangeImageSelect.onNext(imageVariable.value)
+        //onChangeImageSelect.onNext(imageVariable.value)
     }
 }

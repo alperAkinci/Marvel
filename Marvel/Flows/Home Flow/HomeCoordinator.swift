@@ -11,15 +11,14 @@ import RxSwift
 
 final class HomeCoordinator: BaseCoordinator {
 
+    // TODO: delete the variables
     let changeImage = PublishSubject<UIImage?>()
     let completedImageChange = PublishSubject<UIImage?>()
     let disposeBag = DisposeBag()
 
-    private let factory: HomeModuleFactory
-
     //if you are going to change different coordinator this property needed
     private let coordinatorFactory: CoordinatorFactory
-
+    private let factory: HomeModuleFactory
     private let router: Router
 
     init(router: Router, factory: HomeModuleFactory, coordinatorFactory: CoordinatorFactory) {
@@ -37,23 +36,25 @@ final class HomeCoordinator: BaseCoordinator {
     }
 
     override func start() {
-        showComicList()
+        showHomeScreen()
     }
 
     //MARK: - Run controllers belong to homeCoordinator (Home Flow)
 
-    private func showComicList() {
+    private func showHomeScreen() {
+        let viewModel = HomeViewModel()
+        let viewController = factory.makeHomeOutput()
+        viewController.viewModel = viewModel
 
-        let comicsOutput = factory.makeHomeOutput()
-        comicsOutput.onChangeImageSelect.asObservable()
-            .bind(to: changeImage)
-            .disposed(by: disposeBag)
+//        viewController.onChangeImageSelect.asObservable()
+//            .bind(to: changeImage)
+//            .disposed(by: disposeBag)
+//
+//        completedImageChange.asObservable()
+//            .bind(to: viewController.imageVariable)
+//            .disposed(by: disposeBag)
 
-        completedImageChange.asObservable()
-            .bind(to: comicsOutput.imageVariable)
-            .disposed(by: disposeBag)
-
-        router.setRootModule(comicsOutput)
+        router.setRootModule(viewController)
     }
 
     private func showChangeImage(with viewModel: ChangeImageViewModel) {

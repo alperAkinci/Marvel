@@ -13,6 +13,7 @@
 		E10CDB421FCEE22000262870 /* StoryboardsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CDB411FCEE22000262870 /* StoryboardsEnum.swift */; };
 		E10CDB441FCEE3AE00262870 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10CDB431FCEE3AE00262870 /* Home.storyboard */; };
 		E10CDB461FCEE3C400262870 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10CDB451FCEE3C400262870 /* Browse.storyboard */; };
+		E123404F1FED4DEC002A791A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123404E1FED4DEC002A791A /* HomeViewModel.swift */; };
 		E138649C1FD1A66E007E5E8D /* ChangeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138649B1FD1A66E007E5E8D /* ChangeImageController.swift */; };
 		E138649E1FD1A882007E5E8D /* ChangeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138649D1FD1A882007E5E8D /* ChangeImageView.swift */; };
 		E195B05F1FDFE8FC00F114F6 /* ChangeImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195B05E1FDFE8FC00F114F6 /* ChangeImageViewModel.swift */; };
@@ -54,6 +55,7 @@
 		E10CDB411FCEE22000262870 /* StoryboardsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardsEnum.swift; sourceTree = "<group>"; };
 		E10CDB431FCEE3AE00262870 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E10CDB451FCEE3C400262870 /* Browse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
+		E123404E1FED4DEC002A791A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E138649B1FD1A66E007E5E8D /* ChangeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageController.swift; sourceTree = "<group>"; };
 		E138649D1FD1A882007E5E8D /* ChangeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageView.swift; sourceTree = "<group>"; };
 		E195B05E1FDFE8FC00F114F6 /* ChangeImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageViewModel.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				E1FDAE3B1FC72D35004E82DB /* HomeView.swift */,
 				E10CDB361FCED8B800262870 /* HomeController.swift */,
+				E123404E1FED4DEC002A791A /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				E1FDAE131FC6E35D004E82DB /* ApplicationCoordinator.swift in Sources */,
 				E1FDAE261FC71449004E82DB /* BrowseModuleFactory.swift in Sources */,
 				E1FDAE3A1FC72D24004E82DB /* HomeCoordinator.swift in Sources */,
+				E123404F1FED4DEC002A791A /* HomeViewModel.swift in Sources */,
 				E1FDAE1A1FC704AC004E82DB /* Presentable.swift in Sources */,
 				E1FDAE211FC7083A004E82DB /* CoordinatorFactory.swift in Sources */,
 				E1FDAE2A1FC71E8E004E82DB /* ModulefactoryImp.swift in Sources */,
