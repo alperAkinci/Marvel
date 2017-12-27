@@ -12,53 +12,54 @@ import RxCocoa
 
 class ChangeImageController: UIViewController, ChangeImageView {
 
+    @IBOutlet var images: [UIButton]!
+
+    let disposeBag = DisposeBag()
+    var viewModel: ChangeImageViewModel!
+
     var onCompleteSelectImage: (() -> Void)?
     var completeSelectImage = PublishSubject<UIImage>()
-    var changeImageViewModel: ChangeImageViewModel!
-    let disposeBag = DisposeBag()
 
-    var doneButton: UIBarButtonItem? {
-        set {
-            self.navigationItem.rightBarButtonItem = newValue
-        }
-        get {
-            return self.navigationItem.rightBarButtonItem
-        }
-    }
-
-    convenience init(viewModel: ChangeImageViewModel) {
-        self.init()
-        self.changeImageViewModel = viewModel
-    }
-
-    @IBOutlet var images: [UIButton]!
+    private var cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+    private var doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        doneButton = UIBarButtonItem(title: "Done",
-                                      style: .done,
-                                      target: self,
-                                      action: #selector(doneButtonPressed(_:)))
-        setupRx()
+        self.navigationItem.rightBarButtonItem = doneButton
+        self.navigationItem.leftBarButtonItem = cancelButton
+
+        setupBindings()
     }
 
-    func setupRx() {
-        // do bindings
+    func setupBindings() {
+
+        // View Controller UI actions to the View Model inputs
+
+        // TODO: Add comment, refactor
         for imageBtn in images {
-            imageBtn.rx
-                .tap
+            imageBtn.rx.tap
                 .debug("Button Pressed")
-                .subscribe(onNext: { [weak self] in
-                guard let image = imageBtn.imageView?.image else {
-                    print("No image found")
-                    return
-                }
+                .subscribe(onNext: { [weak self] _ in
                 self?.resetButtonBackgroundColors()
                 imageBtn.backgroundColor = UIColor.black
-                self?.changeImageViewModel.imageChanged(image)
             }).disposed(by: disposeBag)
+
+           imageBtn.rx.tap
+                .map({ imageBtn.imageView?.image})
+                .bind(to: viewModel.selectedImage)
+                .disposed(by: disposeBag)
         }
+
+        // TODO: without using image variable, binding gives error, fix it
+        let image = doneButton.rx.tap
+            .map { self.viewModel.selectedImage.value }
+            .map { $0!}
+        image.bind(to: viewModel.done).disposed(by: disposeBag)
+
+        cancelButton.rx.tap
+            .bind(to: viewModel.cancel)
+            .disposed(by: disposeBag)
     }
 
     func resetButtonBackgroundColors() {
@@ -69,11 +70,7 @@ class ChangeImageController: UIViewController, ChangeImageView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // TODO: There is a memory leak, all resources are not disposed after Change Image module closed
         print("resources: \(RxSwift.Resources.total)")
-    }
-
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        var selectedImage = self.changeImageViewModel.selectedImageVariable.value
-        self.completeSelectImage.onNext(selectedImage!)
     }
 }

@@ -11,31 +11,35 @@ import RxSwift
 
 struct ChangeImageViewModel {
 
-    //MARK: Inputs
+    /// Variable that keeps selected image
+    let selectedImage: Variable<UIImage?>
 
-    /// Called when image is selected.
-    let selectImage: AnyObserver<UIImage>
+    //MARK: Inputs (generally used in controllers)
 
     /// Called to close ChangeImage screen.
     let cancel: AnyObserver<Void>
 
+    /// Called to close ChangeImage screen with selected image.
+    let done: AnyObserver<UIImage>
 
-    //MARK: Outputs
+    //MARK: Outputs (generally used in coordinators)
 
-    let didSelectImage: Observable<UIImage>
-
+    /// Emits when we want to cancel image selection (In our case it will close the change image modeule)
     let didCancel: Observable<Void>
 
+    /// Emits when we want to complete image selection (In our case it will close the change image modeule)
+    let didDone: Observable<UIImage>
+
     init() {
-
-        let _selectImage = PublishSubject<UIImage>()
-        self.selectImage = _selectImage.asObserver()
-        self.didSelectImage = _selectImage.asObservable()
-
+        self.selectedImage = Variable<UIImage?>(nil)
 
         let _cancel = PublishSubject<Void>()
         self.cancel = _cancel.asObserver()
         self.didCancel = _cancel.asObservable()
+
+        let _done = PublishSubject<UIImage>()
+        self.done = _done.asObserver()
+        self.didDone = _done.asObservable()
     }
 
 }

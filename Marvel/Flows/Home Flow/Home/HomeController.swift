@@ -37,7 +37,6 @@ class HomeController: UIViewController, HomeView {
                                       style: .plain,
                                       target: self,
                                       action: #selector(clearImage))
-
         setupBindings()
     }
 
@@ -74,5 +73,4 @@ class HomeController: UIViewController, HomeView {
     @objc func clearImage(){
         //imageVariable.value = nil
     }
-
 }

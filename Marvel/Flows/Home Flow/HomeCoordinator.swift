@@ -11,9 +11,6 @@ import RxSwift
 
 final class HomeCoordinator: BaseCoordinator {
 
-    // TODO: delete the variables
-    // let changeImage = PublishSubject<UIImage?>()
-    let completedImageChange = PublishSubject<UIImage?>()
     let disposeBag = DisposeBag()
 
     //if you are going to change different coordinator this property needed
@@ -55,20 +52,36 @@ final class HomeCoordinator: BaseCoordinator {
 
     private func showChangeImage() -> Observable<UIImage?>{
 
-        let viewModel = ChangeImageViewModel()
+        enum ChangeImageModuleResult{
+            case done(UIImage)
+            case cancel
+        }
+
+        // Create controller
         let viewController = factory.makeChangeImageOutput()
-        viewController.changeImageViewModel = viewModel
 
-        viewController.completeSelectImage.asObservable()
-            .subscribe(onNext: { [weak self] (image) in
-                self?.router.popModule(animated: true)
-            })
-            .disposed(by: disposeBag)
+        // Set view model
+        let viewModel = ChangeImageViewModel()
+        viewController.viewModel = viewModel
 
-        viewController.completeSelectImage.asObservable()
-            .bind(to: completedImageChange)
-            .disposed(by: disposeBag)
+        let cancel = viewModel.didCancel.map { _  in
+            ChangeImageModuleResult.cancel
+        }
+
+        let done = viewModel.didDone.map {
+            ChangeImageModuleResult.done($0)
+        }
 
         router.push(viewController)
+
+        return Observable.merge(cancel, done)
+            .take(1)
+            .do(onNext: { [weak self] _ in self?.router.popModule(animated: true)})
+            .map({ (result) in
+                switch result {
+                case .cancel: return nil
+                case .done(let image): return image
+                }
+            })
     }
 }
