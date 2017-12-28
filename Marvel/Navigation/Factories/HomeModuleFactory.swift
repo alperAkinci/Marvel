@@ -11,6 +11,7 @@ import Foundation
 // Currently home module shows comics
 protocol HomeModuleFactory {
     func makeHomeOutput() -> HomeView
+    func makeChangeImageOutput() -> ChangeImageView
     //func makeComicDetailOutput(comic: ComicList) -> ComicDetailView
 }
 

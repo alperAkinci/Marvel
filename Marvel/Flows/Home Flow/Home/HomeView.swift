@@ -7,14 +7,12 @@
 //
 
 import Foundation
+import UIKit
+import RxSwift
 
 protocol HomeView: BaseView {
-    // if user selects comic, trigger this method
-    var onComicSelect: ((ComicList) -> ())? { get set }
-    //var onFinish: (() -> Void)? { get set }
-}
 
-struct ComicList {
+    // TODO: Put viewModel inside BaseView
+    var viewModel: HomeViewModel! { get set }
 
 }
-
