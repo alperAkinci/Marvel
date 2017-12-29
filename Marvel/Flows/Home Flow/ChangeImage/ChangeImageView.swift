@@ -11,9 +11,6 @@ import UIKit
 import RxSwift
 
 protocol ChangeImageView: BaseView {
-    //var completeSelectImage: PublishSubject<UIImage> { get set }
-    //var onCompleteSelectImage: (() -> Void)? { get set }
     var viewModel: ChangeImageViewModel! { get set }
-    //var onFinish: (() -> Void)? { get set }
 }
 

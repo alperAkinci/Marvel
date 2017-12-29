@@ -40,7 +40,7 @@ final class HomeCoordinator: BaseCoordinator {
         viewModel.showChangeImage
             .flatMap { [weak self] _ -> Observable<UIImage?> in
                 guard let `self` = self else { return .empty() }
-                return self.showChangeImage()
+                return self.showChangeImage(with: ImageItem(image: #imageLiteral(resourceName: "rxswift")))
             }
             .filter { $0 != nil }
             .map { $0! }
@@ -50,7 +50,7 @@ final class HomeCoordinator: BaseCoordinator {
         router.setRootModule(viewController)
     }
 
-    private func showChangeImage() -> Observable<UIImage?>{
+    private func showChangeImage(with imageItem: ImageItem) -> Observable<UIImage?>{
 
         enum ChangeImageModuleResult{
             case done(UIImage)
@@ -61,7 +61,7 @@ final class HomeCoordinator: BaseCoordinator {
         let viewController = factory.makeChangeImageOutput()
 
         // Set view model
-        let viewModel = ChangeImageViewModel()
+        let viewModel = ChangeImageViewModel(with: imageItem)
         viewController.viewModel = viewModel
 
         let cancel = viewModel.didCancel.map { _  in

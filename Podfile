@@ -7,8 +7,9 @@ target 'Marvel' do
 
   # Pods for Marvel
 
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwift',       '~> 4.0'
+  pod 'RxCocoa',       '~> 4.0'
+  pod 'RxDataSources', '~> 3.0'
 
 end
 

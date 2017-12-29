@@ -19,21 +19,20 @@ class HomeViewModel {
     /// Call to show ChangeImage screen.
     let changeImage: AnyObserver<Void>
 
-
     //MARK: Outputs
 
     /// Emits a current selected image.
-    let image: Observable<UIImage>
+    let imageSelected: Observable<UIImage>
 
     /// Emits when we should show ChangeImage screen.
     let showChangeImage: Observable<Void>
+
 
     init(initialImage: UIImage = #imageLiteral(resourceName: "rxswift")) {
 
         let _currentImage = BehaviorSubject<UIImage>(value: initialImage)
         self.setImage = _currentImage.asObserver()
-        self.image = _currentImage.asObservable()
-
+        self.imageSelected = _currentImage.asObservable()
 
         let _changeImage = PublishSubject<Void>()
         self.changeImage = _changeImage.asObserver()

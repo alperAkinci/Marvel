@@ -18,25 +18,8 @@ class HomeController: UIViewController, HomeView {
     var viewModel: HomeViewModel!
     private let disposeBag = DisposeBag()
 
-    var clearButton: UIBarButtonItem? {
-        set {
-          self.navigationItem.leftBarButtonItem = newValue
-        }
-        get {
-          return self.navigationItem.leftBarButtonItem
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // TODO: Put it inside viewModel
-        self.navigationItem.title = "Test"
-
-        clearButton = UIBarButtonItem(title: "Clear",
-                                      style: .plain,
-                                      target: self,
-                                      action: #selector(clearImage))
         setupBindings()
     }
 
@@ -48,29 +31,13 @@ class HomeController: UIViewController, HomeView {
     private func setupBindings() {
 
         // View Model outputs to the View Controller
-        viewModel.image
+        viewModel.imageSelected
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
 
-        viewModel.image.subscribe(onNext: {[weak self] (image) in
-            self?.updateUI(image: image)
-        }).disposed(by: disposeBag)
-
-        // View Controller UI actions to the View Model
         changeImageButton.rx.tap
             .debounce(1.0, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.changeImage)
+            .bind(to: self.viewModel.changeImage)
             .disposed(by: disposeBag)
-    }
-
-    func updateUI(image: UIImage?) {
-        // set image name to title
-        self.navigationItem.title = image == nil ? "Pick image" : "Selected Image"
-        // if there is image, enable clear image button
-        clearButton?.isEnabled = image != nil
-    }
-
-    @objc func clearImage(){
-        //imageVariable.value = nil
     }
 }

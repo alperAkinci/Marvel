@@ -11,8 +11,5 @@ import UIKit
 import RxSwift
 
 protocol HomeView: BaseView {
-
-    // TODO: Put viewModel inside BaseView
     var viewModel: HomeViewModel! { get set }
-
 }
