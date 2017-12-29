@@ -16,6 +16,8 @@
 		E123404F1FED4DEC002A791A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123404E1FED4DEC002A791A /* HomeViewModel.swift */; };
 		E138649C1FD1A66E007E5E8D /* ChangeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138649B1FD1A66E007E5E8D /* ChangeImageController.swift */; };
 		E138649E1FD1A882007E5E8D /* ChangeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138649D1FD1A882007E5E8D /* ChangeImageView.swift */; };
+		E15A3B7C1FF53CEA00AA672D /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A3B7B1FF53CEA00AA672D /* ImageCell.swift */; };
+		E15A3B7E1FF53ED200AA672D /* ImageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A3B7D1FF53ED200AA672D /* ImageSection.swift */; };
 		E195B05F1FDFE8FC00F114F6 /* ChangeImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195B05E1FDFE8FC00F114F6 /* ChangeImageViewModel.swift */; };
 		E1AAFC2A1FC5D07B00BA9753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAFC291FC5D07B00BA9753 /* AppDelegate.swift */; };
 		E1AAFC2C1FC5D07B00BA9753 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAFC2B1FC5D07B00BA9753 /* ViewController.swift */; };
@@ -58,6 +60,8 @@
 		E123404E1FED4DEC002A791A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E138649B1FD1A66E007E5E8D /* ChangeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageController.swift; sourceTree = "<group>"; };
 		E138649D1FD1A882007E5E8D /* ChangeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageView.swift; sourceTree = "<group>"; };
+		E15A3B7B1FF53CEA00AA672D /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		E15A3B7D1FF53ED200AA672D /* ImageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSection.swift; sourceTree = "<group>"; };
 		E195B05E1FDFE8FC00F114F6 /* ChangeImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageViewModel.swift; sourceTree = "<group>"; };
 		E1AAFC261FC5D07B00BA9753 /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1AAFC291FC5D07B00BA9753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 		E138649F1FD1A8E1007E5E8D /* ChangeImage */ = {
 			isa = PBXGroup;
 			children = (
+				E15A3B7B1FF53CEA00AA672D /* ImageCell.swift */,
+				E15A3B7D1FF53ED200AA672D /* ImageSection.swift */,
 				E138649D1FD1A882007E5E8D /* ChangeImageView.swift */,
 				E138649B1FD1A66E007E5E8D /* ChangeImageController.swift */,
 				E195B05E1FDFE8FC00F114F6 /* ChangeImageViewModel.swift */,
@@ -405,12 +411,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Marvel/Pods-Marvel-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +463,7 @@
 				E195B05F1FDFE8FC00F114F6 /* ChangeImageViewModel.swift in Sources */,
 				E1FDAE181FC7002E004E82DB /* RouterImp.swift in Sources */,
 				E1FDAE131FC6E35D004E82DB /* ApplicationCoordinator.swift in Sources */,
+				E15A3B7E1FF53ED200AA672D /* ImageSection.swift in Sources */,
 				E1FDAE261FC71449004E82DB /* BrowseModuleFactory.swift in Sources */,
 				E1FDAE3A1FC72D24004E82DB /* HomeCoordinator.swift in Sources */,
 				E123404F1FED4DEC002A791A /* HomeViewModel.swift in Sources */,
@@ -465,6 +476,7 @@
 				E138649C1FD1A66E007E5E8D /* ChangeImageController.swift in Sources */,
 				E1FDAE321FC72260004E82DB /* TabbarCoordinator.swift in Sources */,
 				E1FDAE421FC72D70004E82DB /* BrowseView.swift in Sources */,
+				E15A3B7C1FF53CEA00AA672D /* ImageCell.swift in Sources */,
 				E10CDB3F1FCEE10500262870 /* UIViewControllerExtension.swift in Sources */,
 				E1FDAE401FC72D66004E82DB /* BrowseCoordinator.swift in Sources */,
 				E1FDAE1F1FC706D9004E82DB /* BaseView.swift in Sources */,

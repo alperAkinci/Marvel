@@ -9,10 +9,18 @@
 import Foundation
 import RxSwift
 
+
 struct ChangeImageViewModel {
 
+    let dummyImages = [ImageSection(images: [ImageItem(image: #imageLiteral(resourceName: "swift")),
+                                             ImageItem(image: #imageLiteral(resourceName: "rxswift")),
+                                             ImageItem(image: #imageLiteral(resourceName: "reactiveCocao")),
+                                             ImageItem(image: #imageLiteral(resourceName: "rxswift2"))])
+    ]
+
     /// Variable that keeps selected image
-    let selectedImage: Variable<UIImage?>
+    // TODO: try with Publish Subject
+    let selectedItem: Variable<ImageItem?>
 
     //MARK: Inputs (generally used in controllers)
 
@@ -30,8 +38,8 @@ struct ChangeImageViewModel {
     /// Emits when we want to complete image selection (In our case it will close the change image modeule)
     let didDone: Observable<UIImage>
 
-    init() {
-        self.selectedImage = Variable<UIImage?>(nil)
+    init(with imageItem: ImageItem) {
+        self.selectedItem = Variable<ImageItem?>(imageItem)
 
         let _cancel = PublishSubject<Void>()
         self.cancel = _cancel.asObserver()

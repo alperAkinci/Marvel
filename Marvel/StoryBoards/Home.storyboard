@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,52 +66,63 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1V2-XZ-pLz">
-                                <rect key="frame" x="106.5" y="72" width="107" height="336"/>
-                                <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAg-A4-1ED">
-                                        <rect key="frame" x="0.0" y="0.0" width="107" height="107.5"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vxL-6j-rpj">
+                                <rect key="frame" x="110" y="65.5" width="100" height="414.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="T9R-WN-eGs"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RlR-TV-QDu">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="sZY-me-lBm" customClass="ImageCell" customModule="Marvel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kor-9a-5MY">
+                                                    <rect key="frame" x="15" y="14.5" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="SNo-OD-nqG"/>
+                                                        <constraint firstAttribute="width" constant="70" id="f77-AT-Zle"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="oAg-A4-1ED" secondAttribute="height" multiplier="1:1" id="Cw4-UR-2fx"/>
+                                            <constraint firstItem="Kor-9a-5MY" firstAttribute="centerY" secondItem="sZY-me-lBm" secondAttribute="centerY" id="Ah4-w1-sSd"/>
+                                            <constraint firstItem="Kor-9a-5MY" firstAttribute="centerX" secondItem="sZY-me-lBm" secondAttribute="centerX" id="tsa-L5-HNJ"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="rxswift"/>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSG-KC-SO5">
-                                        <rect key="frame" x="0.0" y="114.5" width="107" height="107"/>
-                                        <state key="normal" image="rxswift2"/>
-                                    </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYu-Jk-sFU">
-                                        <rect key="frame" x="0.0" y="228.5" width="107" height="107.5"/>
-                                        <state key="normal" title="Button" image="swift"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                        <connections>
+                                            <outlet property="imageView" destination="Kor-9a-5MY" id="2M0-yv-q3l"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1V2-XZ-pLz" firstAttribute="centerX" secondItem="y9w-qg-gSx" secondAttribute="centerX" id="8eA-hp-tss"/>
+                            <constraint firstItem="vxL-6j-rpj" firstAttribute="centerX" secondItem="y9w-qg-gSx" secondAttribute="centerX" id="1MX-Vx-5CJ"/>
                             <constraint firstItem="cUE-nJ-6Lr" firstAttribute="leading" secondItem="6uy-Bx-PSE" secondAttribute="leading" constant="16" id="HTO-xc-I6q"/>
-                            <constraint firstItem="1V2-XZ-pLz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cUE-nJ-6Lr" secondAttribute="bottom" constant="8" id="JKl-1u-WRU"/>
-                            <constraint firstItem="1V2-XZ-pLz" firstAttribute="height" secondItem="y9w-qg-gSx" secondAttribute="height" multiplier="7:10" id="Qf7-gb-pch"/>
-                            <constraint firstItem="1V2-XZ-pLz" firstAttribute="centerY" secondItem="y9w-qg-gSx" secondAttribute="centerY" priority="500" id="iiR-w8-QTL"/>
+                            <constraint firstItem="vxL-6j-rpj" firstAttribute="top" secondItem="cUE-nJ-6Lr" secondAttribute="bottom" constant="10" id="flD-Po-Q1l"/>
+                            <constraint firstAttribute="bottom" secondItem="vxL-6j-rpj" secondAttribute="bottom" id="rOG-JP-FmT"/>
                             <constraint firstItem="cUE-nJ-6Lr" firstAttribute="top" secondItem="6uy-Bx-PSE" secondAttribute="top" constant="8" id="zIq-RJ-vvY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6uy-Bx-PSE"/>
                     </view>
                     <connections>
-                        <outletCollection property="images" destination="oAg-A4-1ED" collectionClass="NSMutableArray" id="rrW-oc-XRP"/>
-                        <outletCollection property="images" destination="wSG-KC-SO5" collectionClass="NSMutableArray" id="BpE-J8-OG7"/>
-                        <outletCollection property="images" destination="lYu-Jk-sFU" collectionClass="NSMutableArray" id="KpK-Lr-dTN"/>
+                        <outlet property="collectionView" destination="vxL-6j-rpj" id="6cj-f3-Z59"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tt-03-lRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="78"/>
+            <point key="canvasLocation" x="705" y="77.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="rxswift" width="200" height="200"/>
-        <image name="rxswift2" width="100" height="100"/>
-        <image name="swift" width="256" height="256"/>
-    </resources>
 </document>
