@@ -1,16 +1,9 @@
-# Another Marvel App 
+# Rx - Coordinator - MVVM Example 
 -------
-<p align="center">
-    <a href="#goals">First Step</a> &bull;
-</p>
 
-## First Step
+App is written with Xcode 9 and Swift 4 
 
-Let get into functional reactive programming! 
 
-Imagine a simple app uses MVVM architecture, Coordinators ,RxSwift and Moya! 
-
-Sounds yummy ha, lets start to build it :)  
 
 
 
